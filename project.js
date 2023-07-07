@@ -8,6 +8,16 @@
 
 const prompt = require("prompt-sync")();
 
+const ROWS = 3;
+const COLS = 3;
+
+const SYMBOLS_COUNT = {
+    A : 2,
+    B : 4,
+    C : 6,
+    D : 8
+}
+
 const deposit = () => {
     while (true) {
     const depositAmount = prompt("Enter a deposit amount: ")
@@ -34,4 +44,22 @@ const getNumberOfLine = () => {
             }
     }
 };
+
+const getBet = (balance, lines) => {
+    while (true) {
+        const bet = prompt("Enter bet per line: ");
+            const numberBet = parseFloat(bet);
+    
+            if (isNaN(numberBet)|| numberBet <= 0 || numberBet > balance / numberOfLines) {
+                console.log("Invalid bet, Try again.");
+            }else {
+                return numberBet;
+            }
+        }
+};
+
+let balance = deposit();
+const numberOfLines = getNumberOfLine();
+const bet = getBet(balance, numberOfLines);
+
 
