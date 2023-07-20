@@ -46,6 +46,7 @@ const getNumberOfLine = () => {
 };
 
 const getBet = (balance, lines) => {
+    
     while (true) {
         const bet = prompt("Enter bet per line: ");
             const numberBet = parseFloat(bet);
