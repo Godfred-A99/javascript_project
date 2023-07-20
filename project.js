@@ -11,11 +11,17 @@ const prompt = require("prompt-sync")();
 const ROWS = 3;
 const COLS = 3;
 
-const SYMBOLS_COUNT = {
+const SYMBOLS_COUNT = { 
     A : 2,
     B : 4,
-    C : 6,
+    C : 6,  
     D : 8
+}
+SYMBOLS_VALUES = {
+    A : 10,
+    B : 8,
+    C : 6,  
+    D : 4
 }
 
 const deposit = () => {
@@ -36,7 +42,7 @@ const getNumberOfLine = () => {
     while (true) {
         const lines = prompt("Enter number of lines to bet on (1-3): ")
             const numberOfLines = parseFloat(lines);
-    
+
             if (isNaN(numberOfLines)|| numberOfLines <= 0 || numberOfLines > 3) {
                 console.log("Invalid number of lines, Try again.");
             }else {
@@ -50,8 +56,8 @@ const getBet = (balance, lines) => {
     while (true) {
         const bet = prompt("Enter bet per line: ");
             const numberBet = parseFloat(bet);
-    
-            if (isNaN(numberBet)|| numberBet <= 0 || numberBet > balance / numberOfLines) {
+
+            if (isNaN(numberBet) || numberBet <= 0 || numberBet > balance / numberOfLines) {
                 console.log("Invalid bet, Try again.");
             }else {
                 return numberBet;
@@ -59,6 +65,20 @@ const getBet = (balance, lines) => {
         }
 };
 
+const spin = () => {
+    const symbols = [];
+    for (const [symbol, count] of Object.entries(SYMBOLS_COUNT)) {
+        for (let i = 0; i < count; i++) {
+            symbols.push(symbol);
+        }
+    }
+};
+
+const reels = () => {
+    
+}
+
+spin();
 let balance = deposit();
 const numberOfLines = getNumberOfLine();
 const bet = getBet(balance, numberOfLines);
