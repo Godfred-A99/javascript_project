@@ -110,7 +110,7 @@ const printRows = (rows) => {
     }
 };
 
-const getwinnigs = (rows, bet, lines) => {
+const getWinnigs = (rows, bet, lines) => {
     for (let row = 0; row < lines; row++) {
         const symbols = rows[row];
         let allSame = true;
@@ -122,7 +122,7 @@ const getwinnigs = (rows, bet, lines) => {
             }
         }
     }
-}
+};
 
 let balance = deposit();
 const numberOfLines = getNumberOfLine();
